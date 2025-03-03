@@ -1,0 +1,76 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  margin-top: 60px;
+
+  main {
+    &.content {
+      flex: 1;
+      padding: 20px;
+      width: 100%;
+      height: calc(100vh - 60px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-left: 65px;
+      color: $font-color;
+
+      .video-link {
+        text-decoration: none;
+        color: $font-color;
+      }
+
+      .video-card {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        max-width: 300px;
+        text-align: center;
+        transition: transform 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        .video-image {
+          width: 100%;
+          height: auto;
+        }
+
+        .video-info {
+          padding: 16px;
+          color: $font-color;
+
+          .video-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: left;
+          }
+
+          .video-description {
+            font-size: 1em;
+            color: #7A7A7A;
+            margin: 0.5em 0;
+            text-align: left;
+          }
+        }
+      }
+
+      .iframe-video {
+        border: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .video-card {
+    max-width: 100%;
+    margin: 10px;
+  }
+}
