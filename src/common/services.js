@@ -1,11 +1,26 @@
 import constants from "../common/constants";
 
 const fetchVideoDetails = async (query = '', token = '') => {
-    try {
-        const response = await fetch(`${constants.searchUrl}?key=${constants.API}&part=snippet&maxResults=10&q=${query}&type=video&pageToken=${token}`);
+    const fetchWithApiKey = async (apiKey) => {
+        const response = await fetch(`${constants.searchUrl}?key=${apiKey}&part=snippet&maxResults=10&q=${query}&type=video&pageToken=${token}`);
+        if (response.status === 403) {
+            throw new Error('403 Forbidden');
+        }
         return await response.json();
+    };
+
+    try {
+        return await fetchWithApiKey(constants.API);
     } catch (error) {
-        console.error('Error fetching data:', error);
+        if (error.message === '403 Forbidden') {
+            try {
+                return await fetchWithApiKey(constants.API1);
+            } catch (error) {
+                console.error('Error fetching data with second API key:', error);
+            }
+        } else {
+            console.error('Error fetching data:', error);
+        }
     }
 };
 const fetchPopularVideos = async (token = '') => {
