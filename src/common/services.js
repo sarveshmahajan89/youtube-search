@@ -10,11 +10,11 @@ const fetchVideoDetails = async (query = '', token = '') => {
     };
 
     try {
-        return await fetchWithApiKey(constants.API);
+        return await fetchWithApiKey(process.env.API);
     } catch (error) {
         if (error.message === '403 Forbidden') {
             try {
-                return await fetchWithApiKey(constants.API1);
+                return await fetchWithApiKey(process.env.API1);
             } catch (error) {
                 console.error('Error fetching data with second API key:', error);
             }
@@ -25,7 +25,7 @@ const fetchVideoDetails = async (query = '', token = '') => {
 };
 const fetchPopularVideos = async (token = '') => {
     try {
-        const response = await fetch(`${constants.popularVideosUrl}?key=${constants.API}&part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&maxResults=10&pageToken=${token}`);
+        const response = await fetch(`${constants.popularVideosUrl}?key=${process.env.API}&part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&maxResults=10&pageToken=${token}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching data:', error);
