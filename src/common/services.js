@@ -10,11 +10,11 @@ const fetchVideoDetails = async (query = '', token = '') => {
     };
 
     try {
-        return await fetchWithApiKey(process.env.API);
+        return await fetchWithApiKey(process.env.REACT_API_API_KEY);
     } catch (error) {
         if (error.message === '403 Forbidden') {
             try {
-                return await fetchWithApiKey(process.env.API1);
+                return await fetchWithApiKey(process.env.REACT_API_API_KEY1);
             } catch (error) {
                 console.error('Error fetching data with second API key:', error);
             }
