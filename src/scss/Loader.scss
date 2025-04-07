@@ -1,0 +1,35 @@
+@import 'variables';
+
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 0.1rem;
+  background-color: $loader-color;
+  animation: animate 2s linear infinite;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 699px) {
+  .loader {
+    margin-top: 4px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  30% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  60% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}

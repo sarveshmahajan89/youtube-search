@@ -1,0 +1,122 @@
+@import 'variables';
+
+header {
+  &.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: $background-color;
+    color: $font-color;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    z-index: 1000;
+
+    .search-box {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      border-radius: 60px;
+      padding-left: 15px;
+      background: $white-back-color;
+
+      .search-input {
+        padding: 5px;
+        border: none;
+        border-radius: 10px;
+        background: transparent;
+        flex: 1;
+        outline: none;
+        font-size: 1rem;
+        color: black;
+        width: 100%;
+      }
+
+      .remove-icon {
+        color: $light-grey-color;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary-color;
+        }
+
+      }
+
+      .search-button {
+        border: none;
+        border-radius: 0 50% 50% 0;
+        width: 40px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $light-grey-color;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  header {
+    &.header {
+      .logo {
+        img {
+          content: url("../images/large_logo.png");
+          max-width: 150px;
+          height: auto;
+        }
+      }
+
+      .search-box {
+        width: 40%;
+      }
+
+      .search-button {
+        height: 40px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  header {
+    &.header {
+      .logo {
+        img {
+          content: url("../images/mobile_logo.png");
+          max-width: 50px;
+          height: auto;
+          margin: 5px 0 0 5px;
+        }
+      }
+
+      .search-box {
+        width: 75%;
+      }
+
+      .search-button {
+        height: 30px;
+      }
+    }
+  }
+  .loader {
+    margin-top: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 350px) {
+  header {
+    &.header {
+      .logo {
+        img {
+          max-width: 50px;
+        }
+      }
+    }
+
+    .search-box {
+      width: 80%;
+    }
+  }
+}
